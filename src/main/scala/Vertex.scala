@@ -1,7 +1,7 @@
 class Vertex[T](var data: T) {
   def getData: T = data
 
-  def setData (data: T): Unit = {
+  def setData(data: T): Unit = {
     this.data = data
   }
 
@@ -10,10 +10,11 @@ class Vertex[T](var data: T) {
   }
 
   override def equals(obj: Any): Boolean = {
-    obj match {
-      case that: Vertex[T] => this.data == that.data
-      case _ => false
-    }
+    if (obj == null) return false
+    if (!obj.isInstanceOf[Vertex[T]]) return false
+
+    val other = obj.asInstanceOf[Vertex[T]]
+    data.equals(other.data)
   }
 }
 
